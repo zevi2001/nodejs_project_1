@@ -26,4 +26,18 @@ const allUsers = async (data) => {
     }
   }
 };
-export default { checkAdmin, allUsers };
+const userByAdminOrUser = async (data) => {
+  const checkUser = await users.getData();
+  for (let i = 0; i < checkUser.length; i++) {
+    if (
+      (checkUser[i].email == data.email &&
+        checkUser[i].password == data.password &&
+        checkUser[i].isAdmin == true) ||
+      (checkUser[i].email == data.email &&
+        checkUser[i].password == data.password)
+    ) {
+      return checkUser[i];
+    }
+  }
+};
+export default { checkAdmin, allUsers, userByAdminOrUser };

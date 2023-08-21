@@ -23,10 +23,10 @@ const allUsers = async (req, res) => {
       email,
       password,
     };
-    const fallUsers = await users.allUsers(user);
-    console.log(fallUsers)
-    if (fallUsers) {
-      res.status(200).send(fallUsers);
+    const allUsers = await users.allUsers(user);
+    console.log(allUsers)
+    if (allUsers) {
+      res.status(200).send(allUsers);
     } else {
       res.status(400).send("not admin");
     }
@@ -34,4 +34,23 @@ const allUsers = async (req, res) => {
     console.error(error);
   }
 };
-export default { checkAdmin, allUsers };
+
+const userByAdminOrUser = async (req, res) => {
+  try {
+    const { email, password } = req.body;
+    const user = {
+      email,
+      password,
+    };
+    const allUsers = await users.userByAdminOrUser(user);
+    console.log(allUsers)
+    if (allUsers) {
+      res.status(200).send(allUsers);
+    } else {
+      res.status(400).send("not admin");
+    }
+  } catch (error) {
+    console.error(error);
+  }
+};
+export default { checkAdmin, allUsers ,userByAdminOrUser};

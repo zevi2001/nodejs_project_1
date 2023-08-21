@@ -4,6 +4,6 @@ const router =express.Router()
 
 router.get('/login',permission.checkAdmin)
 router.get('/login/users',permission.allUsers)
-//router.get('/login/usersOrAdmin',permission.allUsersByAdminOrUser)
+router.get('/login/user',permission.userByAdminOrUser)
 
 export default router
