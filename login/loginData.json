@@ -3,7 +3,7 @@
         "id": 20,
         "email": "zzz@gmail.com",
         "password": "123456789",
-        "isAdmin": "true"
+        "isAdmin": true
     },{
         "id": 21,
         "email": "tttz@gmail.com",
