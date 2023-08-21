@@ -1,5 +1,5 @@
 import express, { response } from "express";
-import router from "./login.routes.js";
+import router from './login.routes.js' ;
 import morgan from "morgan";
 
 const app = express();
