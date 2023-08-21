@@ -4,4 +4,7 @@ const addUser=async (data)=>{
     users.push(data)
     return users;
 }
-export default {addUser}
+const findUser=async ()=>{
+    return users;
+}
+export default {addUser,findUser}
