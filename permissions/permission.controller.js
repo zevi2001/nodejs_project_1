@@ -8,7 +8,7 @@ const checkAdmin = async (req, res) => {
     };
     const findAdmin = await users.checkAdmin(user);
     if (findAdmin) {
-      res.status(200).send("admin ok ");
+      res.status(200).send("admin ok");
     } else {
       res.status(400).send("not admin");
     }
@@ -24,12 +24,13 @@ const allUsers = async (req, res) => {
       password,
     };
     const allUsers = await users.allUsers(user);
-    console.log(allUsers)
+    console.log(allUsers);
     if (allUsers) {
       res.status(200).send(allUsers);
     } else {
       res.status(400).send("not admin");
     }
+    return allUsers;
   } catch (error) {
     console.error(error);
   }
@@ -42,50 +43,49 @@ const userByAdminOrUser = async (req, res) => {
       password,
     };
     const allUsers = await users.userByAdminOrUser(user);
-    console.log(allUsers)
     if (allUsers) {
       res.status(200).send(allUsers);
     } else {
       res.status(400).send("not admin");
     }
+    return allUsers
   } catch (error) {
     console.error(error);
   }
 };
 const editByUser = async (req, res) => {
   try {
-    const { id,email, password ,isAdmin} = req.body;
+    const { id, email, password, isAdmin } = req.body;
     const user = {
       id,
       email,
       password,
-      isAdmin
+      isAdmin,
     };
     const editUser = await users.editByUser(user);
-    console.log(editUser)
     if (editUser) {
       res.status(200).send(editUser);
     } else {
       res.status(400).send("cant edit");
     }
+    return editUser
   } catch (error) {
     console.error(error);
   }
 };
-const deleteByUserOrAdmin = async (req, res ,next) => {
+const deleteByUserOrAdmin = async (req, res) => {
   try {
-    const { id,email, password ,isAdmin} = req.body;
+    const { id, email, password, isAdmin } = req.body;
     const user = {
       id,
       email,
       password,
-      isAdmin
+      isAdmin,
     };
     const editUser = await users.deleteByUserOrAdmin(user);
-    console.log(editUser)
+    console.log(editUser);
     if (editUser) {
       res.status(200).send(editUser);
-      next();
     } else {
       res.status(400).send("cant delete");
     }
@@ -94,4 +94,10 @@ const deleteByUserOrAdmin = async (req, res ,next) => {
   }
 };
 
-export default { checkAdmin, allUsers ,userByAdminOrUser ,editByUser,deleteByUserOrAdmin};
+export default {
+  checkAdmin,
+  allUsers,
+  userByAdminOrUser,
+  editByUser,
+  deleteByUserOrAdmin,
+};
