@@ -1,0 +1,22 @@
+[
+    {
+        "id": 20,
+        "email": "zzz@gmail.com",
+        "password": "123456789",
+        "isAdmin": "true"
+    },{
+        "id": 21,
+        "email": "tttz@gmail.com",
+        "password": "123456789",
+        "isAdmin": false
+    },{
+        "id": 22,
+        "email": "www@gmail.com",
+        "password": "852014789",
+        "isAdmin": false    },{
+        "id": 23,
+        "email": "ppp@gmail.com",
+        "password": "987654",
+        "isAdmin": false
+    }
+]
