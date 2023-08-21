@@ -13,7 +13,8 @@
         "id": 22,
         "email": "www@gmail.com",
         "password": "852014789",
-        "isAdmin": false    },{
+        "isAdmin": false    },
+        {
         "id": 23,
         "email": "ppp@gmail.com",
         "password": "987654",

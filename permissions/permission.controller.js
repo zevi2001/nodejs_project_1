@@ -34,7 +34,6 @@ const allUsers = async (req, res) => {
     console.error(error);
   }
 };
-
 const userByAdminOrUser = async (req, res) => {
   try {
     const { email, password } = req.body;
@@ -53,4 +52,46 @@ const userByAdminOrUser = async (req, res) => {
     console.error(error);
   }
 };
-export default { checkAdmin, allUsers ,userByAdminOrUser};
+const editByUser = async (req, res) => {
+  try {
+    const { id,email, password ,isAdmin} = req.body;
+    const user = {
+      id,
+      email,
+      password,
+      isAdmin
+    };
+    const editUser = await users.editByUser(user);
+    console.log(editUser)
+    if (editUser) {
+      res.status(200).send(editUser);
+    } else {
+      res.status(400).send("cant edit");
+    }
+  } catch (error) {
+    console.error(error);
+  }
+};
+const deleteByUserOrAdmin = async (req, res ,next) => {
+  try {
+    const { id,email, password ,isAdmin} = req.body;
+    const user = {
+      id,
+      email,
+      password,
+      isAdmin
+    };
+    const editUser = await users.deleteByUserOrAdmin(user);
+    console.log(editUser)
+    if (editUser) {
+      res.status(200).send(editUser);
+      next();
+    } else {
+      res.status(400).send("cant delete");
+    }
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+export default { checkAdmin, allUsers ,userByAdminOrUser ,editByUser,deleteByUserOrAdmin};
