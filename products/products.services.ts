@@ -1,25 +1,29 @@
-import products from "./products.dal.js";
+import products from "./products.dal.ts";
 
-const getProducts = async () => {
+const getProducts = async (): Promise<any[]> => {
   const productsData = await products.getProducts();
   return productsData;
 };
-const addProducts = async (data) => {
+
+const addProducts = async (data: any): Promise<any[]> => {
   const productsData = await products.getProducts();
   productsData.push(data);
   return productsData;
 };
-const getProductsById = async (id) => {
+
+const getProductsById = async (id: number): Promise<any | undefined> => {
   const productsData = await products.getProducts();
-  const userById = productsData.find((user) => user.id == id);
+  const userById = productsData.find((user:any) => user.id == id);
   return userById;
 };
-const patchProductsById = async (id) => {
+
+const patchProductsById = async (id: number): Promise<any | undefined> => {
   const productsData = await products.getProducts();
-  const patchUserById = await productsData.find((user) => user.id == id);
+  const patchUserById = await productsData.find((user:any) => user.id == id);
   return patchUserById;
 };
-const deleteProductsById = async (id) => {
+
+const deleteProductsById = async (id: number): Promise<any[]> => {
   console.log(id);
   const productsData = await products.getProducts();
   for (let i = 0; i < productsData.length; i++) {
@@ -29,7 +33,8 @@ const deleteProductsById = async (id) => {
   }
   return productsData;
 };
-const productsIncQuantityById = async (id) => {
+
+const productsIncQuantityById = async (id: number): Promise<any[]> => {
   const productsData = await products.getProducts();
   for (let i = 0; i < productsData.length; i++) {
     if (productsData[i].id == id) {
@@ -38,7 +43,8 @@ const productsIncQuantityById = async (id) => {
   }
   return productsData;
 };
-const productsInsertQuantityById = async (id) => {
+
+const productsInsertQuantityById = async (id: number): Promise<any[]> => {
   const productsData = await products.getProducts();
   for (let i = 0; i < productsData.length; i++) {
     if (productsData[i].id == id) {
@@ -49,8 +55,6 @@ const productsInsertQuantityById = async (id) => {
   }
   return productsData;
 };
-
-
 
 export default {
   getProducts,
